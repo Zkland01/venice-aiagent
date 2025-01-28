@@ -155,8 +155,10 @@
     const sendBtn = document.getElementById('send-btn');
 
     // Use the CORS proxy URL
-    const API_URL = 'https://cors-anywhere.herokuapp.com/https://api.venice.ai/api/v1/chat/completions';
-    const API_KEY = "L1D2Pe5ThJmfeeCR-ezzM-ktO4DaSht0rj-CKAAkRI";
+    // const API_URL = 'https://corsproxy.io/?key=b74c2d34&url=https://api.venice.ai/api/v1/chat/completions';
+    // const API_KEY = "L1D2Pe5ThJmfeeCR-ezzM-ktO4DaSht0rj-CKAAkRI";
+    const API_URL = 'https://api.openai.com/v1/chat/completions';
+const API_KEY ="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"
 
     function addChatBubble(message, isIncoming = false) {
       const chatBubble = document.createElement('div');
@@ -175,9 +177,9 @@
             Authorization: `Bearer ${API_KEY}`,
           },
           body: JSON.stringify({
-            model: 'dolphin-2.9.2-qwen2-72b',
-            messages: [{ role: 'user', content: prompt }],
-          }),
+        model: 'gpt-3.5-turbo',
+        messages: [{ role: 'user', content: prompt }],
+      }),
         });
         const data = await response.json();
         return data.choices[0].message.content;
